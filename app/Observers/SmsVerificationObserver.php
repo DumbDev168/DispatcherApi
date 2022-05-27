@@ -13,7 +13,7 @@ class SmsVerificationObserver
     public function created(SmsVerification $sms)
     {
         $user = User::where('phone_number',$sms->phone_number)->first();
-        $user->sendSmsVerifyCode($sms->code);
+       // $user->sendSmsVerifyCode($sms->code);
     }
 
 }

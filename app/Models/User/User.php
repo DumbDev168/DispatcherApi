@@ -16,6 +16,7 @@ class User extends Authenticatable
     use HasFactory, SoftDeletes, HasApiTokens, Notifiable;
     protected  $table = "users";
     protected  $guarded = ['id'];
+    protected $hidden = ['password'];
 
     public const USER_TOKEN = "UserToken";
 

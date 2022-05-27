@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Auth\RegisterRequest;
 use App\Http\Requests\VerifyPhoneNumberRequest;
+use App\Http\Resources\User\UserResource;
 use App\Models\User\SmsVerification;
 use App\Models\User\User;
 use App\Services\UserService;
@@ -24,7 +25,7 @@ class RegisterController extends Controller
         $data['password'] = Hash::make($data['password']);
         $user = User::create($data);
         $service->addUserSmsConfirmationCode($user);
-        return $this->successWithMsg($user,'sms_code_send');
+        return $this->successWithMsg(new UserResource($user),'sms_code_send');
     }
 
 
